@@ -1,5 +1,5 @@
 def fizz_buzz(n)
-    if    n % 15 == 0     
+    if n % 15 == 0     
         puts "Fizz Buzz"
     elsif n % 3 == 0
         puts "Fizz"
