@@ -13,3 +13,29 @@ special_price = 100 #これが一般的
 special_Price = 100 #キャメルケースは利用しない
 
 メソッドの引数は省略できる
+
+配列に初期値を設定する場合には注意が必要
+
+a = Array.new(5, 'default')
+a = ["default","default","default","default","default"]
+
+str = a[0]
+str => "default"
+str.upcase!
+str => "DEFAULT"
+a = ["DEFAULT","DEFAULT","DEFAULT","DEFAULT","DEFAULT"]
+
+
+全て大文字になってしまうのは、配列の全要素が同じ文字オブジェクトを参照しているから。
+この場合はブロックで初期値を渡すようにする。
+a = Array.new(5) { 'default'}
+a => ["default","default","default","default","default"]
+
+str = a[0]
+str => "default"
+str.upcase!
+str => "DEFAULT"
+
+a => ["DEFAULT","default","default","default","default"]
+
+ブロックの場合はブロックが呼ばれるたびに文字列のdefaultが新しく生成される
